@@ -1,0 +1,199 @@
+<!-- ==========================================
+     AI PROJECT DESCRIPTION GENERATOR
+     ========================================== -->
+
+<!-- Floating Action Button untuk membuka generator -->
+<button id="aiGeneratorBtn" class="ai-generator-fab" title="AI Project Generator" aria-label="Buka AI Generator">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+    <path d="M2 17l10 5 10-5"></path>
+    <path d="M2 12l10 5 10-5"></path>
+  </svg>
+  <span class="fab-badge">AI</span>
+</button>
+
+<!-- Modal Container -->
+<div id="aiGeneratorModal" class="ai-modal" style="display: none;">
+  <div class="ai-modal-overlay" id="aiModalOverlay"></div>
+  
+  <div class="ai-modal-content">
+    <!-- Header -->
+    <div class="ai-modal-header">
+      <div class="ai-header-title">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path>
+        </svg>
+        <h2>AI Project Description Generator</h2>
+      </div>
+      <button class="ai-close-btn" id="aiCloseBtn" aria-label="Tutup">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Form Input -->
+    <div class="ai-modal-body">
+      <!-- Step 1: Project Info Input -->
+      <div class="ai-step" id="stepInput">
+        <div class="ai-form-group">
+          <label for="projectName">Nama Proyek *</label>
+          <input 
+            type="text" 
+            id="projectName" 
+            placeholder="Contoh: Restaurant Management System"
+            class="ai-input"
+            required
+          >
+        </div>
+
+        <div class="ai-form-group">
+          <label for="githubUrl">GitHub URL (opsional)</label>
+          <input 
+            type="url" 
+            id="githubUrl" 
+            placeholder="https://github.com/username/repo"
+            class="ai-input"
+          >
+          <small class="ai-help-text">AI akan fetch info dari GitHub jika URL disediakan</small>
+        </div>
+
+        <div class="ai-form-group">
+          <label for="techStack">Tech Stack *</label>
+          <input 
+            type="text" 
+            id="techStack" 
+            placeholder="Contoh: Laravel, PHP, MySQL, Bootstrap"
+            class="ai-input"
+            required
+          >
+          <small class="ai-help-text">Pisahkan dengan koma</small>
+        </div>
+
+        <div class="ai-form-group">
+          <label for="projectType">Kategori Proyek *</label>
+          <select id="projectType" class="ai-select">
+            <option value="web-app">Web Application</option>
+            <option value="native">Native Web</option>
+            <option value="laravel">Laravel & PHP</option>
+            <option value="digital-invitation">Undangan Digital</option>
+          </select>
+        </div>
+
+        <div class="ai-form-group">
+          <label for="projectFeatures">Fitur Utama (opsional)</label>
+          <textarea 
+            id="projectFeatures" 
+            rows="3"
+            placeholder="Contoh: Dashboard admin, CRUD operation, Authentication, Real-time updates"
+            class="ai-textarea"
+          ></textarea>
+        </div>
+
+        <div class="ai-form-group">
+          <label for="geminiApiKey">Google Gemini API Key *</label>
+          <div class="ai-api-key-wrapper">
+            <input 
+              type="password" 
+              id="geminiApiKey" 
+              placeholder="Masukkan API Key Anda"
+              class="ai-input"
+            >
+            <button type="button" class="ai-toggle-key" id="toggleApiKey" aria-label="Show/Hide API Key">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </button>
+          </div>
+          <small class="ai-help-text">
+            Dapatkan API key gratis di 
+            <a href="https://makersuite.google.com/app/apikey" target="_blank" rel="noopener">Google AI Studio</a>
+          </small>
+        </div>
+
+        <div class="ai-actions">
+          <button type="button" class="ai-btn ai-btn-primary" id="generateBtn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path>
+            </svg>
+            <span>Generate Deskripsi dengan AI</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 2: Loading State -->
+      <div class="ai-step ai-loading" id="stepLoading" style="display: none;">
+        <div class="ai-loader">
+          <div class="ai-spinner"></div>
+          <p>AI sedang menganalisis dan membuat deskripsi...</p>
+          <small>Mohon tunggu sebentar</small>
+        </div>
+      </div>
+
+      <!-- Step 3: Result Preview -->
+      <div class="ai-step" id="stepResult" style="display: none;">
+        <div class="ai-result-header">
+          <h3>Hasil Generate AI</h3>
+          <button type="button" class="ai-btn-small ai-btn-secondary" id="regenerateBtn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="23 4 23 10 17 10"></polyline>
+              <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+            </svg>
+            Regenerate
+          </button>
+        </div>
+
+        <!-- Generated Description -->
+        <div class="ai-result-box">
+          <label>Deskripsi yang Dihasilkan:</label>
+          <textarea 
+            id="generatedDescription" 
+            rows="4"
+            class="ai-textarea ai-result-textarea"
+          ></textarea>
+          <small class="ai-help-text">Anda bisa edit deskripsi sebelum copy</small>
+        </div>
+
+        <!-- Generated Tags -->
+        <div class="ai-result-box">
+          <label>Tags yang Disarankan:</label>
+          <div id="generatedTags" class="ai-tags-preview"></div>
+        </div>
+
+        <!-- Full HTML Card Preview -->
+        <div class="ai-result-box">
+          <label>HTML Card (Copy & Paste ke index.html):</label>
+          <pre id="generatedHtml" class="ai-code-preview"></pre>
+        </div>
+
+        <div class="ai-actions">
+          <button type="button" class="ai-btn ai-btn-success" id="copyHtmlBtn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+            <span>Copy HTML Card</span>
+          </button>
+          <button type="button" class="ai-btn ai-btn-secondary" id="newProjectBtn">
+            <span>Generate Proyek Baru</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Info -->
+    <div class="ai-modal-footer">
+      <p class="ai-footer-note">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="16" x2="12" y2="12"></line>
+          <line x1="12" y1="8" x2="12.01" y2="8"></line>
+        </svg>
+        API key Anda disimpan di browser (localStorage) dan tidak dikirim ke server manapun
+      </p>
+    </div>
+  </div>
+</div>
