@@ -132,9 +132,7 @@ function initMobileMenu() {
    -------------------------------------------------------------------------- */
 function initProjectFilters() {
   const filterBtns = document.querySelectorAll('.filter-btn');
-  const projectCards = document.querySelectorAll('.project-card');
-
-  if (!filterBtns.length || !projectCards.length) return;
+  if (!filterBtns.length) return;
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -142,6 +140,7 @@ function initProjectFilters() {
       btn.classList.add('active');
 
       const filterValue = btn.getAttribute('data-filter');
+      const projectCards = document.querySelectorAll('.project-card');
 
       projectCards.forEach(card => {
         const categories = (card.getAttribute('data-category') || '').split(' ');

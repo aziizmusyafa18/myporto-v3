@@ -8,8 +8,15 @@
   <meta name="keywords" content="Muhammad Luthfi Aziiz Musyafa, Web Developer, Frontend, Backend, Laravel, JavaScript, Portofolio">
   <meta name="author" content="Muhammad Luthfi 'Aziiz Musyafa'">
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/jpeg" href="assets/images/profile.jpg">
+  <!-- Favicon & Shortcut Icons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/lt1.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="assets/icons/lt1.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/lt1.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/icons/lt1.png">
+  <link rel="icon" type="image/png" sizes="1024x1024" href="assets/icons/lt1.png">
+  <link rel="shortcut icon" type="image/png" href="assets/icons/lt1.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/lt1.png">
+  <link rel="manifest" href="site.webmanifest">
 
   <!-- Google Fonts: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,6 +25,7 @@
 
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="css/style.css?v=1.6">
+  <link rel="stylesheet" href="css/ai-generator.css?v=1.0">
 </head>
 <body data-theme="light">
 
@@ -28,9 +36,7 @@
   <header class="site-header" id="siteHeader">
     <div class="header-container">
       <a href="#hero" class="brand-logo">
-        <svg class="octicon" viewBox="0 0 16 16" width="22" height="22" fill="currentColor">
-          <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path>
-        </svg>
+        <img src="assets/icons/lt1.png" alt="LuthfieTech Logo" width="48" height="48" class="brand-icon">
         <span class="brand-text">LuthfieTech</span>
       </a>
 
@@ -509,7 +515,13 @@
       <div class="section-header reveal-on-scroll">
         <div class="section-tag">Portofolio Karya</div>
         <h2 class="section-title">Semua Proyek & Showcase</h2>
-        <p class="section-subtitle">Koleksi proyek nyata yang dikembangkan. Anda dapat dengan mudah meng-custom atau menambahkan proyek baru.</p>
+        <p class="section-subtitle">Koleksi proyek nyata yang dikembangkan. Setiap deskripsi proyek dirangkum dan disinkronkan secara otomatis oleh AI berdasarkan berkas README.md repositori GitHub.</p>
+        <div class="section-ai-badge">
+          <span class="ai-live-badge" id="aiSyncStatusBadge" title="Otomatis terhubung ke GitHub @aziizmusyafa18 dan meng-generate deskripsi proyek via AI">
+            <span class="ai-pulse-dot"></span>
+            <span id="aiSyncStatusText">Terhubung ke GitHub @aziizmusyafa18 • AI Auto-Sync Aktif</span>
+          </span>
+        </div>
       </div>
 
       <!-- Filter Controls -->
@@ -527,14 +539,20 @@
         <!-- ==========================================
              PROYEK 1: ROMANSA (HIGHLIGHT)
              ========================================== -->
-        <article class="project-card highlight reveal-on-scroll" data-category="laravel web-app">
+        <article class="project-card highlight reveal-on-scroll" data-category="laravel web-app" data-repo="aziizmusyafa18/Romansa">
           <div class="project-card-top">
             <div class="project-type-badge">
               <span class="star-icon">★</span> Highlight Project
             </div>
-            <a href="https://github.com/aziizmusyafa18/Romansa" target="_blank" rel="noopener noreferrer" class="project-ext-link" title="Buka di GitHub">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-            </a>
+            <div class="project-card-top-right">
+              <span class="ai-summary-tag" title="Deskripsi ini dihasilkan dan disinkronkan oleh AI langsung dari file README.md repositori GitHub">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path></svg>
+                <span>AI Summary</span>
+              </span>
+              <a href="https://github.com/aziizmusyafa18/Romansa" target="_blank" rel="noopener noreferrer" class="project-ext-link" title="Buka di GitHub">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
           </div>
 
           <!-- Image Showcase - GANTI dengan screenshot Anda -->
@@ -564,7 +582,7 @@
               <a href="https://github.com/aziizmusyafa18/Romansa" target="_blank" rel="noopener noreferrer">Romansa - Sistem Administrasi Anggota</a>
             </h3>
             <p class="project-desc">
-              Aplikasi komprehensif pengelola data anggota dan administrasi organisasi dengan dashboard interaktif, validasi data real-time, dan manajemen hak akses.
+              Sistem administrasi dan tata kelola data anggota organisasi berbasis Laravel dan Vue.js, dilengkapi dashboard interaktif, validasi data real-time, serta manajemen hak akses pengguna yang aman dan terstruktur.
             </p>
             <div class="project-tags">
               <span class="tag tag-php">PHP</span>
@@ -581,6 +599,10 @@
               <span class="lang-name">PHP</span>
             </div>
             <div class="project-links">
+              <button type="button" class="btn-detail-desc" title="Lihat detail deskripsi proyek">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                <span>Detail Deskripsi</span>
+              </button>
               <a href="https://github.com/aziizmusyafa18/Romansa" target="_blank" rel="noopener noreferrer" class="link-btn">
                 <span>Source Code</span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -592,12 +614,18 @@
         <!-- ==========================================
              PROYEK 2: KHODRAT MANAJEMEN KEUANGAN
              ========================================== -->
-        <article class="project-card reveal-on-scroll" data-category="native web-app">
+        <article class="project-card reveal-on-scroll" data-category="native web-app" data-repo="aziizmusyafa18/khodrat-manajemen-keuangan">
           <div class="project-card-top">
             <div class="project-type-badge normal">Web Tool</div>
-            <a href="https://github.com/aziizmusyafa18/khodrat-manajemen-keuangan" target="_blank" rel="noopener noreferrer" class="project-ext-link" title="Buka di GitHub">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-            </a>
+            <div class="project-card-top-right">
+              <span class="ai-summary-tag" title="Deskripsi ini dihasilkan dan disinkronkan oleh AI langsung dari file README.md repositori GitHub">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path></svg>
+                <span>AI Summary</span>
+              </span>
+              <a href="https://github.com/aziizmusyafa18/khodrat-manajemen-keuangan" target="_blank" rel="noopener noreferrer" class="project-ext-link" title="Buka di GitHub">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
           </div>
 
           <!-- Image Showcase - Khodrat -->
@@ -626,7 +654,7 @@
               <a href="https://github.com/aziizmusyafa18/khodrat-manajemen-keuangan" target="_blank" rel="noopener noreferrer">Khodrat Manajemen Keuangan</a>
             </h3>
             <p class="project-desc">
-              Aplikasi pengelola keuangan berbasis native language yang terintegrasi secara otomatis dengan spreadsheet untuk pembukuan kas masuk dan keluar.
+              Platform transparansi kas dan pembukuan organisasi berbasis Native Web dan Google Apps Script, menghadirkan pencatatan iuran kas bulanan terpadu, visualisasi arus kas via Chart.js, serta pencetakan laporan otomatis tanpa server database terpisah.
             </p>
             <div class="project-tags">
               <span class="tag tag-js">JavaScript Native</span>
@@ -642,6 +670,10 @@
               <span class="lang-name">JavaScript</span>
             </div>
             <div class="project-links">
+              <button type="button" class="btn-detail-desc" title="Lihat detail deskripsi proyek">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                <span>Detail Deskripsi</span>
+              </button>
               <a href="https://github.com/aziizmusyafa18/khodrat-manajemen-keuangan" target="_blank" rel="noopener noreferrer" class="link-btn">
                 <span>Source Code</span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -653,12 +685,18 @@
         <!-- ==========================================
              PROYEK 3: RESTAURANT MANAGEMENT SYSTEM
              ========================================== -->
-        <article class="project-card reveal-on-scroll" data-category="laravel web-app">
+        <article class="project-card reveal-on-scroll" data-category="laravel web-app" data-repo="aziizmusyafa18/restaurant-management-system">
           <div class="project-card-top">
             <div class="project-type-badge normal">Enterprise App</div>
-            <a href="https://github.com/aziizmusyafa18/restaurant-management-system" target="_blank" rel="noopener noreferrer" class="project-ext-link" title="Buka di GitHub">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-            </a>
+            <div class="project-card-top-right">
+              <span class="ai-summary-tag" title="Deskripsi ini dihasilkan dan disinkronkan oleh AI langsung dari file README.md repositori GitHub">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path></svg>
+                <span>AI Summary</span>
+              </span>
+              <a href="https://github.com/aziizmusyafa18/restaurant-management-system" target="_blank" rel="noopener noreferrer" class="project-ext-link" title="Buka di GitHub">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
           </div>
 
           <!-- Image Showcase - Restaurant -->
@@ -687,7 +725,7 @@
               <a href="https://github.com/aziizmusyafa18/restaurant-management-system" target="_blank" rel="noopener noreferrer">Restaurant Management System</a>
             </h3>
             <p class="project-desc">
-              Sistem manajemen operasional restoran lengkap berbasis Laravel, mengelola daftar menu, antrian pesanan dapur, kasir, dan laporan penjualan berkala.
+              Sistem operasional restoran terpadu berbasis Laravel 11 dan MySQL, mengintegrasikan alur pemesanan mandiri customer via QR meja, modul kasir dengan kalkulasi struk printer termal otomatis, serta dashboard analitik penjualan multi-role.
             </p>
             <div class="project-tags">
               <span class="tag tag-laravel">Laravel</span>
@@ -703,6 +741,10 @@
               <span class="lang-name">Blade & PHP</span>
             </div>
             <div class="project-links">
+              <button type="button" class="btn-detail-desc" title="Lihat detail deskripsi proyek">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                <span>Detail Deskripsi</span>
+              </button>
               <a href="https://github.com/aziizmusyafa18/restaurant-management-system" target="_blank" rel="noopener noreferrer" class="link-btn">
                 <span>Source Code</span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -714,12 +756,18 @@
         <!-- ==========================================
              PROYEK 4: CHATBOT WITH GEMINI
              ========================================== -->
-        <article class="project-card reveal-on-scroll" data-category="web-app native">
+        <article class="project-card reveal-on-scroll" data-category="web-app native" data-repo="aziizmusyafa18/chatbot-with-gemini">
           <div class="project-card-top">
             <div class="project-type-badge normal">AI Integration</div>
-            <a href="https://github.com/aziizmusyafa18/chatbot-with-gemini" target="_blank" rel="noopener noreferrer" class="project-ext-link" title="Buka di GitHub">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-            </a>
+            <div class="project-card-top-right">
+              <span class="ai-summary-tag" title="Deskripsi ini dihasilkan dan disinkronkan oleh AI langsung dari file README.md repositori GitHub">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path></svg>
+                <span>AI Summary</span>
+              </span>
+              <a href="https://github.com/aziizmusyafa18/chatbot-with-gemini" target="_blank" rel="noopener noreferrer" class="project-ext-link" title="Buka di GitHub">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
           </div>
 
           <!-- Image Showcase - Chatbot Gemini -->
@@ -748,7 +796,7 @@
               <a href="https://github.com/aziizmusyafa18/chatbot-with-gemini" target="_blank" rel="noopener noreferrer">Chatbot With Gemini AI</a>
             </h3>
             <p class="project-desc">
-              Aplikasi obrolan pintar berbasis kecerdasan buatan dengan integrasi Google Gemini API, menyediakan respon interaktif, natural, dan cepat.
+              Aplikasi asisten percakapan cerdas yang mengintegrasikan Google Gemini Generative AI, dirancang dengan antarmuka chat responsif, pemrosesan prompt kontekstual cepat, serta manajemen riwayat percakapan yang adaptif.
             </p>
             <div class="project-tags">
               <span class="tag tag-js">JavaScript</span>
@@ -764,6 +812,10 @@
               <span class="lang-name">JavaScript</span>
             </div>
             <div class="project-links">
+              <button type="button" class="btn-detail-desc" title="Lihat detail deskripsi proyek">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                <span>Detail Deskripsi</span>
+              </button>
               <a href="https://github.com/aziizmusyafa18/chatbot-with-gemini" target="_blank" rel="noopener noreferrer" class="link-btn">
                 <span>Source Code</span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -775,12 +827,18 @@
         <!-- ==========================================
              PROYEK 5: SISTEM PEMINJAMAN LAPTOP
              ========================================== -->
-        <article class="project-card reveal-on-scroll" data-category="web-app">
+        <article class="project-card reveal-on-scroll" data-category="web-app" data-repo="aziizmusyafa18/sistem-peminjaman">
           <div class="project-card-top">
             <div class="project-type-badge normal">Backend API & System</div>
-            <a href="https://github.com/aziizmusyafa18/sistem-peminjaman" target="_blank" rel="noopener noreferrer" class="project-ext-link" title="Buka di GitHub">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-            </a>
+            <div class="project-card-top-right">
+              <span class="ai-summary-tag" title="Deskripsi ini dihasilkan dan disinkronkan oleh AI langsung dari file README.md repositori GitHub">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path></svg>
+                <span>AI Summary</span>
+              </span>
+              <a href="https://github.com/aziizmusyafa18/sistem-peminjaman" target="_blank" rel="noopener noreferrer" class="project-ext-link" title="Buka di GitHub">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
           </div>
 
           <!-- Image Showcase - Sistem Peminjaman -->
@@ -809,7 +867,7 @@
               <a href="https://github.com/aziizmusyafa18/sistem-peminjaman" target="_blank" rel="noopener noreferrer">Sistem Peminjaman Laptop</a>
             </h3>
             <p class="project-desc">
-              Sistem pencatatan dan sirkulasi peminjaman aset laptop kampus/sekolah menggunakan backend Express.js, konfigurasi CORS, dan antarmuka Bootstrap.
+              Aplikasi manajemen inventaris dan sirkulasi peminjaman perangkat berbasis Node.js dan Express.js, menyediakan pelacakan ketersediaan unit secara akurat, pencatatan durasi peminjaman, serta proteksi RESTful API dengan konfigurasi CORS yang aman.
             </p>
             <div class="project-tags">
               <span class="tag">Express.js</span>
@@ -825,6 +883,10 @@
               <span class="lang-name">Node.js / Express</span>
             </div>
             <div class="project-links">
+              <button type="button" class="btn-detail-desc" title="Lihat detail deskripsi proyek">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                <span>Detail Deskripsi</span>
+              </button>
               <a href="https://github.com/aziizmusyafa18/sistem-peminjaman" target="_blank" rel="noopener noreferrer" class="link-btn">
                 <span>Source Code</span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -836,12 +898,18 @@
         <!-- ==========================================
              PROYEK 6: JUDOL SIMULATION (EDUKASI)
              ========================================== -->
-        <article class="project-card reveal-on-scroll" data-category="native">
+        <article class="project-card reveal-on-scroll" data-category="native" data-repo="aziizmusyafa18/judol-simulation">
           <div class="project-card-top">
             <div class="project-type-badge normal">Simulasi & Edukasi</div>
-            <a href="https://github.com/aziizmusyafa18/judol-simulation" target="_blank" rel="noopener noreferrer" class="project-ext-link" title="Buka di GitHub">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-            </a>
+            <div class="project-card-top-right">
+              <span class="ai-summary-tag" title="Deskripsi ini dihasilkan dan disinkronkan oleh AI langsung dari file README.md repositori GitHub">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path></svg>
+                <span>AI Summary</span>
+              </span>
+              <a href="https://github.com/aziizmusyafa18/judol-simulation" target="_blank" rel="noopener noreferrer" class="project-ext-link" title="Buka di GitHub">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
           </div>
 
           <!-- Image Showcase - Judol Simulation -->
@@ -870,7 +938,7 @@
               <a href="https://github.com/aziizmusyafa18/judol-simulation" target="_blank" rel="noopener noreferrer">Simulasi Edukasi Probabilitas</a>
             </h3>
             <p class="project-desc">
-              Aplikasi simulasi yang dirancang khusus untuk sarana edukasi literasi digital, memperlihatkan logika algoritma kerugian matematika di balik judi online.
+              Simulasi arsitektur telemetri berbasis web untuk riset edukasi rekayasa perangkat lunak, mendemonstrasikan integrasi Frontend Game Engine 5x3 dengan Backend Risk Management System (RMS), throttling RTP dinamis, dan analisis manipulasi kognitif bandar.
             </p>
             <div class="project-tags">
               <span class="tag tag-html">HTML5</span>
@@ -885,6 +953,10 @@
               <span class="lang-name">HTML / JS</span>
             </div>
             <div class="project-links">
+              <button type="button" class="btn-detail-desc" title="Lihat detail deskripsi proyek">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                <span>Detail Deskripsi</span>
+              </button>
               <a href="https://github.com/aziizmusyafa18/judol-simulation" target="_blank" rel="noopener noreferrer" class="link-btn">
                 <span>Source Code</span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -896,12 +968,18 @@
         <!-- ==========================================
              PROYEK 7: WEDDING NETFLIX
              ========================================== -->
-        <article class="project-card reveal-on-scroll" data-category="native digital-invitation">
+        <article class="project-card reveal-on-scroll" data-category="native digital-invitation" data-repo="aziizmusyafa18/wedding-netflix">
           <div class="project-card-top">
             <div class="project-type-badge normal">Creative Web</div>
-            <a href="https://github.com/aziizmusyafa18/wedding-netflix" target="_blank" rel="noopener noreferrer" class="project-ext-link" title="Buka di GitHub">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-            </a>
+            <div class="project-card-top-right">
+              <span class="ai-summary-tag" title="Deskripsi ini dihasilkan dan disinkronkan oleh AI langsung dari file README.md repositori GitHub">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path></svg>
+                <span>AI Summary</span>
+              </span>
+              <a href="https://github.com/aziizmusyafa18/wedding-netflix" target="_blank" rel="noopener noreferrer" class="project-ext-link" title="Buka di GitHub">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
           </div>
 
           <!-- Image Showcase - Wedding Netflix -->
@@ -930,7 +1008,7 @@
               <a href="https://github.com/aziizmusyafa18/wedding-netflix" target="_blank" rel="noopener noreferrer">Wedding Invitation Gaya Netflix</a>
             </h3>
             <p class="project-desc">
-              Desain undangan digital interaktif yang mengadaptasi antarmuka streaming Netflix dengan navigasi profil, pemutar musik, dan hitung mundur acara.
+              Platform undangan pernikahan digital kreatif bertema antarmuka streaming Netflix, dilengkapi efek splash screen sinematik, sistem personalisasi nama tamu dinamis via URL parameter (?to=), serta integrasi formulir RSVP langsung ke Google Sheets.
             </p>
             <div class="project-tags">
               <span class="tag tag-css">CSS3 Animasi</span>
@@ -945,6 +1023,10 @@
               <span class="lang-name">CSS / JS</span>
             </div>
             <div class="project-links">
+              <button type="button" class="btn-detail-desc" title="Lihat detail deskripsi proyek">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                <span>Detail Deskripsi</span>
+              </button>
               <a href="https://github.com/aziizmusyafa18/wedding-netflix" target="_blank" rel="noopener noreferrer" class="link-btn">
                 <span>Source Code</span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -956,12 +1038,18 @@
         <!-- ==========================================
              PROYEK 8: PORTOFOLIO V2
              ========================================== -->
-        <article class="project-card reveal-on-scroll" data-category="native">
+        <article class="project-card reveal-on-scroll" data-category="native" data-repo="aziizmusyafa18/portofolio-v2">
           <div class="project-card-top">
             <div class="project-type-badge normal">Portofolio Show</div>
-            <a href="https://github.com/aziizmusyafa18/portofolio-v2" target="_blank" rel="noopener noreferrer" class="project-ext-link" title="Buka di GitHub">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-            </a>
+            <div class="project-card-top-right">
+              <span class="ai-summary-tag" title="Deskripsi ini dihasilkan dan disinkronkan oleh AI langsung dari file README.md repositori GitHub">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path></svg>
+                <span>AI Summary</span>
+              </span>
+              <a href="https://github.com/aziizmusyafa18/portofolio-v2" target="_blank" rel="noopener noreferrer" class="project-ext-link" title="Buka di GitHub">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
           </div>
 
           <!-- Image Showcase - Portofolio v2 -->
@@ -990,7 +1078,7 @@
               <a href="https://github.com/aziizmusyafa18/portofolio-v2" target="_blank" rel="noopener noreferrer">Website Portofolio v2</a>
             </h3>
             <p class="project-desc">
-              Iterasi portofolio terdahulu dengan tata letak minimalis dan eksplorasi animasi navigasi berbasis vanilla code.
+              Website showcase portofolio personal generasi kedua dengan konsep tata letak minimalis, penekanan pada performa muat tinggi, tipografi modern, serta navigasi mulus yang menampilkan riwayat karya rekayasa web.
             </p>
             <div class="project-tags">
               <span class="tag tag-html">HTML5</span>
@@ -1005,6 +1093,10 @@
               <span class="lang-name">HTML5</span>
             </div>
             <div class="project-links">
+              <button type="button" class="btn-detail-desc" title="Lihat detail deskripsi proyek">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                <span>Detail Deskripsi</span>
+              </button>
               <a href="https://github.com/aziizmusyafa18/portofolio-v2" target="_blank" rel="noopener noreferrer" class="link-btn">
                 <span>Source Code</span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -1016,12 +1108,18 @@
         <!-- ==========================================
              PROYEK 9: ZANA WEDDING
              ========================================== -->
-        <article class="project-card reveal-on-scroll" data-category="digital-invitation native">
+        <article class="project-card reveal-on-scroll" data-category="digital-invitation native" data-repo="aziizmusyafa18/zana-wedding">
           <div class="project-card-top">
             <div class="project-type-badge normal">Undangan Digital</div>
-            <a href="https://github.com/aziizmusyafa18/zana-wedding" target="_blank" rel="noopener noreferrer" class="project-ext-link" title="Buka di GitHub">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-            </a>
+            <div class="project-card-top-right">
+              <span class="ai-summary-tag" title="Deskripsi ini dihasilkan dan disinkronkan oleh AI langsung dari file README.md repositori GitHub">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path></svg>
+                <span>AI Summary</span>
+              </span>
+              <a href="https://github.com/aziizmusyafa18/zana-wedding" target="_blank" rel="noopener noreferrer" class="project-ext-link" title="Buka di GitHub">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
           </div>
 
           <div class="project-showcase">
@@ -1049,7 +1147,7 @@
               <a href="https://github.com/aziizmusyafa18/zana-wedding" target="_blank" rel="noopener noreferrer">Zana Wedding Invitation</a>
             </h3>
             <p class="project-desc">
-              Website undangan digital pernikahan dengan desain elegan, countdown timer, dan fitur RSVP interaktif.
+              Undangan digital bertema monokrom modern yang menyajikan tata letak foto galeri sinematik, panduan rute acara Google Maps, dan buku tamu ucapan selamat dengan performa ringan di semua perangkat seluler.
             </p>
             <div class="project-tags">
               <span class="tag tag-html">HTML5</span>
@@ -1064,6 +1162,10 @@
               <span class="lang-name">HTML</span>
             </div>
             <div class="project-links">
+              <button type="button" class="btn-detail-desc" title="Lihat detail deskripsi proyek">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                <span>Detail Deskripsi</span>
+              </button>
               <a href="https://github.com/aziizmusyafa18/zana-wedding" target="_blank" rel="noopener noreferrer" class="link-btn">
                 <span>Source Code</span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -1075,12 +1177,18 @@
         <!-- ==========================================
              PROYEK 10: DWIFANY WEDDING
              ========================================== -->
-        <article class="project-card reveal-on-scroll" data-category="digital-invitation native">
+        <article class="project-card reveal-on-scroll" data-category="digital-invitation native" data-repo="aziizmusyafa18/dwifany-wedding">
           <div class="project-card-top">
             <div class="project-type-badge normal">Undangan Digital</div>
-            <a href="https://github.com/aziizmusyafa18/dwifany-wedding" target="_blank" rel="noopener noreferrer" class="project-ext-link" title="Buka di GitHub">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-            </a>
+            <div class="project-card-top-right">
+              <span class="ai-summary-tag" title="Deskripsi ini dihasilkan dan disinkronkan oleh AI langsung dari file README.md repositori GitHub">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path></svg>
+                <span>AI Summary</span>
+              </span>
+              <a href="https://github.com/aziizmusyafa18/dwifany-wedding" target="_blank" rel="noopener noreferrer" class="project-ext-link" title="Buka di GitHub">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
           </div>
 
           <div class="project-showcase">
@@ -1108,7 +1216,7 @@
               <a href="https://github.com/aziizmusyafa18/dwifany-wedding" target="_blank" rel="noopener noreferrer">Dwifany Wedding Invitation</a>
             </h3>
             <p class="project-desc">
-              Undangan digital pernikahan dengan tema modern, galeri foto, dan fitur ucapan dari tamu undangan.
+              Undangan pernikahan digital interaktif dengan estetika visual elegan, menyajikan hitung mundur acara personal, pemutar musik latar lembut, peta penunjuk rute terintegrasi, dan konfirmasi kehadiran (RSVP) responsif.
             </p>
             <div class="project-tags">
               <span class="tag tag-html">HTML5</span>
@@ -1123,6 +1231,10 @@
               <span class="lang-name">HTML</span>
             </div>
             <div class="project-links">
+              <button type="button" class="btn-detail-desc" title="Lihat detail deskripsi proyek">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                <span>Detail Deskripsi</span>
+              </button>
               <a href="https://github.com/aziizmusyafa18/dwifany-wedding" target="_blank" rel="noopener noreferrer" class="link-btn">
                 <span>Source Code</span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -1134,12 +1246,18 @@
         <!-- ==========================================
              PROYEK 11: HAFIDINTAN WEDDING
              ========================================== -->
-        <article class="project-card reveal-on-scroll" data-category="digital-invitation native">
+        <article class="project-card reveal-on-scroll" data-category="digital-invitation native" data-repo="aziizmusyafa18/hafidintan-wedding">
           <div class="project-card-top">
             <div class="project-type-badge normal">Undangan Digital</div>
-            <a href="https://github.com/aziizmusyafa18/hafidintan-wedding" target="_blank" rel="noopener noreferrer" class="project-ext-link" title="Buka di GitHub">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-            </a>
+            <div class="project-card-top-right">
+              <span class="ai-summary-tag" title="Deskripsi ini dihasilkan dan disinkronkan oleh AI langsung dari file README.md repositori GitHub">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path></svg>
+                <span>AI Summary</span>
+              </span>
+              <a href="https://github.com/aziizmusyafa18/hafidintan-wedding" target="_blank" rel="noopener noreferrer" class="project-ext-link" title="Buka di GitHub">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
           </div>
 
           <div class="project-showcase">
@@ -1167,7 +1285,7 @@
               <a href="https://github.com/aziizmusyafa18/hafidintan-wedding" target="_blank" rel="noopener noreferrer">Hafidintan Wedding Invitation</a>
             </h3>
             <p class="project-desc">
-              Website undangan pernikahan dengan desain romantis, musik latar, dan informasi acara lengkap.
+              Website undangan digital bernuansa romantis dan elegan, menghadirkan integrasi countdown timer akurat, galeri memori foto interaktif, serta fitur RSVP instan bagi kerabat dan sahabat.
             </p>
             <div class="project-tags">
               <span class="tag tag-html">HTML5</span>
@@ -1182,6 +1300,10 @@
               <span class="lang-name">HTML</span>
             </div>
             <div class="project-links">
+              <button type="button" class="btn-detail-desc" title="Lihat detail deskripsi proyek">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                <span>Detail Deskripsi</span>
+              </button>
               <a href="https://github.com/aziizmusyafa18/hafidintan-wedding" target="_blank" rel="noopener noreferrer" class="link-btn">
                 <span>Source Code</span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -1193,12 +1315,18 @@
         <!-- ==========================================
              PROYEK 12: ABSEN DIGITAL
              ========================================== -->
-        <article class="project-card reveal-on-scroll" data-category="web-app">
+        <article class="project-card reveal-on-scroll" data-category="web-app" data-repo="aziizmusyafa18/absen-digital">
           <div class="project-card-top">
             <div class="project-type-badge normal">Web Application</div>
-            <a href="https://github.com/aziizmusyafa18/absen-digital" target="_blank" rel="noopener noreferrer" class="project-ext-link" title="Buka di GitHub">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-            </a>
+            <div class="project-card-top-right">
+              <span class="ai-summary-tag" title="Deskripsi ini dihasilkan dan disinkronkan oleh AI langsung dari file README.md repositori GitHub">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path></svg>
+                <span>AI Summary</span>
+              </span>
+              <a href="https://github.com/aziizmusyafa18/absen-digital" target="_blank" rel="noopener noreferrer" class="project-ext-link" title="Buka di GitHub">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
           </div>
 
           <div class="project-showcase">
@@ -1223,24 +1351,30 @@
 
           <div class="project-body">
             <h3 class="project-title">
-              <a href="https://github.com/aziizmusyafa18/absen-digital" target="_blank" rel="noopener noreferrer">Absen Digital</a>
+              <a href="https://github.com/aziizmusyafa18/absen-digital" target="_blank" rel="noopener noreferrer">Absen Digital (ADINDA)</a>
             </h3>
             <p class="project-desc">
-              Sistem absensi digital dengan teknologi modern untuk tracking kehadiran, laporan real-time, dan manajemen data karyawan/siswa.
+              Platform tata kelola presensi akademik terintegrasi (ADINDA) berbasis Node.js dan Socket.io, dilengkapi gateway notifikasi WhatsApp otomatis ke wali murid, modul rekapitulasi nilai harian, serta ekspor laporan administratif sekolah.
             </p>
             <div class="project-tags">
-              <span class="tag tag-html">HTML5</span>
-              <span class="tag tag-css">CSS3</span>
-              <span class="tag tag-js">JavaScript</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">Express.js</span>
+              <span class="tag">Socket.io</span>
+              <span class="tag">WhatsApp Gateway</span>
+              <span class="tag tag-bs">Bootstrap 5</span>
             </div>
           </div>
 
           <div class="project-footer">
             <div class="repo-meta">
-              <span class="lang-dot" style="background-color: #e34c26;"></span>
-              <span class="lang-name">HTML</span>
+              <span class="lang-dot" style="background-color: #68a063;"></span>
+              <span class="lang-name">Node.js</span>
             </div>
             <div class="project-links">
+              <button type="button" class="btn-detail-desc" title="Lihat detail deskripsi proyek">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                <span>Detail Deskripsi</span>
+              </button>
               <a href="https://github.com/aziizmusyafa18/absen-digital" target="_blank" rel="noopener noreferrer" class="link-btn">
                 <span>Source Code</span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -1252,12 +1386,18 @@
         <!-- ==========================================
              PROYEK 13: BIRTHDAY GREETINGS
              ========================================== -->
-        <article class="project-card reveal-on-scroll" data-category="native">
+        <article class="project-card reveal-on-scroll" data-category="native" data-repo="aziizmusyafa18/birthdaygreatings">
           <div class="project-card-top">
             <div class="project-type-badge normal">Creative Web</div>
-            <a href="https://github.com/aziizmusyafa18/birthdaygreatings" target="_blank" rel="noopener noreferrer" class="project-ext-link" title="Buka di GitHub">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-            </a>
+            <div class="project-card-top-right">
+              <span class="ai-summary-tag" title="Deskripsi ini dihasilkan dan disinkronkan oleh AI langsung dari file README.md repositori GitHub">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path></svg>
+                <span>AI Summary</span>
+              </span>
+              <a href="https://github.com/aziizmusyafa18/birthdaygreatings" target="_blank" rel="noopener noreferrer" class="project-ext-link" title="Buka di GitHub">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
           </div>
 
           <div class="project-showcase">
@@ -1285,7 +1425,7 @@
               <a href="https://github.com/aziizmusyafa18/birthdaygreatings" target="_blank" rel="noopener noreferrer">Birthday Greetings</a>
             </h3>
             <p class="project-desc">
-              Ucapan selamat ulang tahun interaktif dengan animasi native, efek confetti, dan design yang ceria dan menarik.
+              Karya interaktif web kreatif berbasis Native JavaScript murni untuk perayaan ulang tahun, menghadirkan animasi kartu dinamis, efek transisi visual ceria, dan pesan ucapan personal tanpa library eksternal.
             </p>
             <div class="project-tags">
               <span class="tag tag-html">HTML5</span>
@@ -1300,6 +1440,10 @@
               <span class="lang-name">CSS</span>
             </div>
             <div class="project-links">
+              <button type="button" class="btn-detail-desc" title="Lihat detail deskripsi proyek">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                <span>Detail Deskripsi</span>
+              </button>
               <a href="https://github.com/aziizmusyafa18/birthdaygreatings" target="_blank" rel="noopener noreferrer" class="link-btn">
                 <span>Source Code</span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -1311,12 +1455,18 @@
         <!-- ==========================================
              PROYEK 14: BIRTHDAY NEW
              ========================================== -->
-        <article class="project-card reveal-on-scroll" data-category="native">
+        <article class="project-card reveal-on-scroll" data-category="native" data-repo="aziizmusyafa18/birthdaynew">
           <div class="project-card-top">
             <div class="project-type-badge normal">Creative Web</div>
-            <a href="https://github.com/aziizmusyafa18/birthdaynew" target="_blank" rel="noopener noreferrer" class="project-ext-link" title="Buka di GitHub">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-            </a>
+            <div class="project-card-top-right">
+              <span class="ai-summary-tag" title="Deskripsi ini dihasilkan dan disinkronkan oleh AI langsung dari file README.md repositori GitHub">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path></svg>
+                <span>AI Summary</span>
+              </span>
+              <a href="https://github.com/aziizmusyafa18/birthdaynew" target="_blank" rel="noopener noreferrer" class="project-ext-link" title="Buka di GitHub">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
           </div>
 
           <div class="project-showcase">
@@ -1344,7 +1494,7 @@
               <a href="https://github.com/aziizmusyafa18/birthdaynew" target="_blank" rel="noopener noreferrer">Birthday New</a>
             </h3>
             <p class="project-desc">
-              Versi terbaru ucapan ulang tahun digital dengan desain modern, animasi smooth, dan personalisasi pesan.
+              Eksplorasi antarmuka kreatif mikro-interaksi untuk ucapan digital personal, menampilkan tipografi ekspresif, efek elemen mengambang, serta arsitektur kode frontend yang ringan dan adaptif.
             </p>
             <div class="project-tags">
               <span class="tag tag-html">HTML5</span>
@@ -1359,6 +1509,10 @@
               <span class="lang-name">JavaScript</span>
             </div>
             <div class="project-links">
+              <button type="button" class="btn-detail-desc" title="Lihat detail deskripsi proyek">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                <span>Detail Deskripsi</span>
+              </button>
               <a href="https://github.com/aziizmusyafa18/birthdaynew" target="_blank" rel="noopener noreferrer" class="link-btn">
                 <span>Source Code</span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -1370,12 +1524,18 @@
         <!-- ==========================================
              PROYEK 15: CAFE MR. KLASIK
              ========================================== -->
-        <article class="project-card reveal-on-scroll" data-category="native">
+        <article class="project-card reveal-on-scroll" data-category="native" data-repo="aziizmusyafa18/cafe-mr.klasik">
           <div class="project-card-top">
             <div class="project-type-badge normal">Business Website</div>
-            <a href="https://github.com/aziizmusyafa18/cafe-mr.klasik" target="_blank" rel="noopener noreferrer" class="project-ext-link" title="Buka di GitHub">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-            </a>
+            <div class="project-card-top-right">
+              <span class="ai-summary-tag" title="Deskripsi ini dihasilkan dan disinkronkan oleh AI langsung dari file README.md repositori GitHub">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path></svg>
+                <span>AI Summary</span>
+              </span>
+              <a href="https://github.com/aziizmusyafa18/cafe-mr.klasik" target="_blank" rel="noopener noreferrer" class="project-ext-link" title="Buka di GitHub">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
           </div>
 
           <div class="project-showcase">
@@ -1403,7 +1563,7 @@
               <a href="https://github.com/aziizmusyafa18/cafe-mr.klasik" target="_blank" rel="noopener noreferrer">Cafe Mr. Klasik</a>
             </h3>
             <p class="project-desc">
-              Website warkop full service dengan menu digital, informasi lokasi, dan sistem pemesanan online untuk kedai kopi.
+              Website profil bisnis coffee shop dan warkop modern, menghadirkan sajian katalog menu kuliner terstruktur, informasi fasilitas operasional, serta tautan pemesanan langsung ke kasir via WhatsApp.
             </p>
             <div class="project-tags">
               <span class="tag tag-html">HTML5</span>
@@ -1418,6 +1578,10 @@
               <span class="lang-name">HTML</span>
             </div>
             <div class="project-links">
+              <button type="button" class="btn-detail-desc" title="Lihat detail deskripsi proyek">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                <span>Detail Deskripsi</span>
+              </button>
               <a href="https://github.com/aziizmusyafa18/cafe-mr.klasik" target="_blank" rel="noopener noreferrer" class="link-btn">
                 <span>Source Code</span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -1547,9 +1711,7 @@
     <div class="footer-container">
       <div class="footer-top">
         <div class="footer-brand">
-          <svg class="octicon" viewBox="0 0 16 16" width="20" height="20" fill="currentColor">
-            <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path>
-          </svg>
+          <img src="assets/icons/lt1.png" alt="LuthfieTech Logo" width="48" height="48" class="brand-icon">
           <span class="footer-brand-title">LuthfieTech</span>
         </div>
         <div class="footer-social-links">
@@ -1569,7 +1731,61 @@
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>
   </button>
 
-  <!-- JavaScript Script -->
+  <!-- ==============================================
+       PROJECT DETAIL MODAL (DETAIL DESKRIPSI PROYEK)
+       ============================================== -->
+  <div id="projectDetailModal" class="project-detail-modal" style="display: none;" aria-hidden="true">
+    <div class="detail-modal-overlay" id="detailModalOverlay"></div>
+    <div class="detail-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="detailModalTitle">
+      <div class="detail-modal-header">
+        <div class="detail-header-left">
+          <span class="project-type-badge normal" id="detailModalBadge">Highlight Project</span>
+          <span class="ai-summary-tag" id="detailModalAiTag">AI Summary</span>
+        </div>
+        <button type="button" class="detail-modal-close" id="detailModalClose" aria-label="Tutup modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="detail-modal-body">
+        <div class="detail-modal-media" id="detailModalMedia">
+          <img src="" alt="" id="detailModalImg" class="detail-modal-img">
+        </div>
+        <h2 class="detail-modal-title" id="detailModalTitle"></h2>
+        
+        <div class="detail-desc-card">
+          <div class="detail-desc-header">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path>
+            </svg>
+            <span>Deskripsi Lengkap Proyek (AI Verified)</span>
+          </div>
+          <p class="detail-modal-description-text" id="detailModalDesc"></p>
+        </div>
+
+        <div class="detail-tags-section">
+          <span class="detail-section-label">Teknologi & Ekosistem:</span>
+          <div class="detail-modal-tags" id="detailModalTags"></div>
+        </div>
+      </div>
+
+      <div class="detail-modal-footer">
+        <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary detail-modal-cta" id="detailModalRepoLink">
+          <svg class="octicon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+            <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path>
+          </svg>
+          <span>Kunjungi Repositori di GitHub</span>
+        </a>
+        <button type="button" class="btn btn-secondary" id="detailModalCloseBtn">Tutup</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Scripts -->
   <script src="js/main.js?v=1.5"></script>
+  <script src="js/ai-generator.js?v=2.0"></script>
 </body>
 </html>

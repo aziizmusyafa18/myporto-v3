@@ -36,6 +36,12 @@ Portofolio web modern, sederhana namun berkelas dengan skema warna utama **Putih
    - Scroll progress bar di bagian paling atas.
    - Navigasi Scrollspy aktif otomatis mengikuti posisi layar.
    - Tombol mengambang *Back to Top*.
+8. **✨ Integrasi Otomatis GitHub & AI Project Engine:**
+   - **Sinkronisasi Langsung ke GitHub (`@aziizmusyafa18`):** Setiap kali Anda push proyek atau repositori baru ke GitHub, halaman portofolio secara otomatis mendeteksi, membuat kartu proyek baru, dan memperbarui showcase tanpa perlu input manual.
+   - **Skenario 1 (Ada Berkas `.md`):** AI otomatis membaca dan merangkum berkas `README.md` repositori menjadi kalimat deskripsi portofolio yang ringkas, elegan, dan profesional.
+   - **Skenario 2 (Tanpa Berkas `.md`):** AI langsung mereview kode repositori secara cerdas dengan menganalisis komposisi bahasa (`/languages`), struktur berkas (`/contents`), dan file konfigurasi arsitektur (`composer.json`, `package.json`, dll.) untuk menyusun deskripsi teknis otomatis.
+   - **Indikator Status Real-time:** Dilengkapi badge status koneksi GitHub live dengan animasi pulsasi di header showcase proyek.
+   - **Caching Cerdas:** Hasil ekstraksi AI disimpan di `localStorage` peramban untuk menghemat kuota limit GitHub API serta menjamin performa muat secepat kilat.
 
 ---
 
@@ -45,12 +51,16 @@ Portofolio web modern, sederhana namun berkelas dengan skema warna utama **Putih
 porto-v3/
 ├── index.html              # Struktur utama dokumen HTML5
 ├── css/
-│   └── style.css           # Styling lengkap, variabel warna, responsive & animasi
+│   ├── style.css           # Styling lengkap portofolio, tema, & responsive
+│   └── ai-generator.css    # Styling badge status live sync & kartu AI
 ├── js/
-│   └── main.js             # Logika tema, filter proyek, scroll reveal & form WhatsApp
+│   ├── main.js             # Logika tema, filter proyek, scroll reveal & form WhatsApp
+│   └── ai-generator.js     # Engine sinkronisasi GitHub API & AI Code Review
 ├── assets/
+│   ├── icons/              # Ikon teknologi & shortcut icon (lt1.png)
 │   └── images/
-│       └── profile.jpg     # Foto profil lokal (dengan fallback online)
+│       ├── profile.jpg     # Foto profil lokal
+│       └── projects/       # Tangkapan layar karya proyek
 └── README.md               # Dokumentasi portofolio
 ```
 

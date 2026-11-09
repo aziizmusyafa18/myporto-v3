@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient (Deep Tech Slate) -->
+    <linearGradient id="ltBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0e17" />
+      <stop offset="60%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#181e36" />
+    </linearGradient>
+
+    <!-- Border Stroke Gradient -->
+    <linearGradient id="ltBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="50%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#a855f7" />
+    </linearGradient>
+
+    <!-- Primary Glyph Gradient (Electric Cyan to Vivid Indigo) -->
+    <linearGradient id="ltGlyph" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f2fe" />
+      <stop offset="45%" stop-color="#4facfe" />
+      <stop offset="80%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#8b5cf6" />
+    </linearGradient>
+
+    <!-- Accent Slash Gradient (Emerald to Cyan Tech Glow) -->
+    <linearGradient id="ltAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+
+    <!-- Ambient Shadow Filter -->
+    <filter id="ltShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#000000" flood-opacity="0.6" />
+    </filter>
+
+    <!-- Inner Glow Filter -->
+    <filter id="coreGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="glow" />
+      <feMerge>
+        <feMergeNode in="glow" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Squircle Container with Premium Border -->
+  <rect x="20" y="20" width="472" height="472" rx="118" fill="url(#ltBg)" stroke="url(#ltBorder)" stroke-width="8" filter="url(#ltShadow)" />
+
+  <!-- Ambient Backdrop Light -->
+  <circle cx="256" cy="256" r="140" fill="#38bdf8" opacity="0.08" filter="blur(36px)" />
+
+  <!-- Brand Glyph: The LuthfieTech Monogram
+       Engineered for bold contrast & razor-sharp visibility at 16px and 512px.
+       Features:
+       1. The primary architectural 'L' (Vertical stem + horizontal base).
+       2. The complementary 'T' crossbar integrated as a sleek upper wing.
+       3. Dynamic coding chevron / terminal prompt cut '>_'
+  -->
+  <g filter="url(#coreGlow)">
+    <!-- Top Horizontal Bar of 'T' (Upper Tech Wing) -->
+    <path d="M 148 140 C 148 126.7 158.7 116 172 116 L 340 116 C 353.3 116 364 126.7 364 140 L 364 154 C 364 167.3 353.3 178 340 178 L 172 178 C 158.7 178 148 167.3 148 154 Z" fill="url(#ltGlyph)" />
+
+    <!-- Vertical Stem of 'L' & 'T' -->
+    <path d="M 226 116 L 286 116 L 286 334 C 286 347.3 275.3 358 262 358 L 226 358 Z" fill="url(#ltGlyph)" opacity="0.95" />
+
+    <!-- Bold 'L' Foundation Beam with 45-degree Tech Chamfer -->
+    <path d="M 148 116 L 208 116 L 208 334 C 208 360.5 229.5 382 256 382 L 350 382 C 363.3 382 374 392.7 374 406 C 374 419.3 363.3 430 350 430 L 230 430 C 184.7 430 148 393.3 148 348 Z" fill="url(#ltGlyph)" />
+
+    <!-- Dynamic Terminal Prompt Chevron '> ' (Emerald/Cyan Innovation Accent) -->
+    <path d="M 295 240 L 345 285 L 295 330" fill="none" stroke="url(#ltAccent)" stroke-width="26" stroke-linecap="round" stroke-linejoin="round" />
+
+    <!-- Terminal Cursor Dot -->
+    <circle cx="365" cy="330" r="10" fill="#10b981" />
+  </g>
+</svg>
