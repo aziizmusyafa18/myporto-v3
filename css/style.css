@@ -137,8 +137,11 @@ button, input, textarea {
    3. SITE HEADER & NAVIGATION
    -------------------------------------------------------------------------- */
 .site-header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
   z-index: 900;
   background-color: var(--bg-overlay);
   backdrop-filter: blur(12px);
@@ -300,6 +303,7 @@ button, input, textarea {
   max-width: 1080px;
   margin: 0 auto;
   padding: 0 24px;
+  padding-top: 72px; /* Kompensasi untuk fixed header (approx header height) */
 }
 
 .section-container {
@@ -402,12 +406,15 @@ button, input, textarea {
 .profile-avatar {
   width: 140px;
   height: 140px;
+  min-width: 140px;
+  min-height: 140px;
   border-radius: 50%;
   object-fit: cover;
   border: 4px solid var(--bg-card);
   box-shadow: 0 0 0 2px var(--border-medium), var(--shadow-md);
   margin: 0 auto;
   transition: transform var(--transition-normal);
+  aspect-ratio: 1 / 1;
 }
 
 .profile-avatar-wrapper:hover .profile-avatar {
@@ -1662,14 +1669,21 @@ button, input, textarea {
   position: relative;
   width: 44px;
   height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  flex-shrink: 0;
 }
 
 .chat-avatar {
-  width: 100%;
-  height: 100%;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid var(--bg-card);
+  aspect-ratio: 1 / 1;
+  display: block;
 }
 
 .chat-online-pulse {
@@ -1922,6 +1936,20 @@ button, input, textarea {
   z-index: 800;
 }
 
+/* Mobile Menu Backdrop Overlay */
+.mobile-nav-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 898;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
 .scroll-top-btn.visible {
   opacity: 1;
   visibility: visible;
@@ -1982,22 +2010,25 @@ button, input, textarea {
     top: 60px;
     left: 0;
     right: 0;
+    z-index: 899; /* Di bawah header (900) tapi di atas konten */
     background-color: var(--bg-card);
     border-bottom: 1px solid var(--border-light);
     flex-direction: column;
     padding: 20px 24px;
     gap: 16px;
     box-shadow: var(--shadow-lg);
-    transform: translateY(-120%);
+    transform: translateY(-200%);
     opacity: 0;
     visibility: hidden;
-    transition: all var(--transition-normal);
+    pointer-events: none;
+    transition: transform var(--transition-normal), opacity var(--transition-normal), visibility var(--transition-normal);
   }
 
   .nav-links.open {
     transform: translateY(0);
     opacity: 1;
     visibility: visible;
+    pointer-events: auto;
   }
 
   .mobile-toggle {
@@ -2067,5 +2098,18 @@ button, input, textarea {
   .project-footer {
     padding-left: 16px;
     padding-right: 16px;
+  }
+
+  /* Scroll-to-top lebih kecil di mobile agar gap dengan floating btn pas */
+  .scroll-top-btn {
+    bottom: 20px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+  }
+
+  /* Mobile nav overlay saat menu terbuka */
+  .mobile-nav-overlay.visible {
+    display: block;
   }
 }

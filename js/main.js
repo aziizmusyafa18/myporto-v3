@@ -115,15 +115,42 @@ function initMobileMenu() {
 
   if (!mobileBtn || !navLinks) return;
 
+  function openMenu() {
+    navLinks.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    mobileBtn.setAttribute('aria-expanded', 'true');
+  }
+
+  function closeMenu() {
+    navLinks.classList.remove('open');
+    document.body.style.overflow = '';
+    mobileBtn.setAttribute('aria-expanded', 'false');
+  }
+
   mobileBtn.addEventListener('click', () => {
-    navLinks.classList.toggle('open');
+    const isOpen = navLinks.classList.contains('open');
+    isOpen ? closeMenu() : openMenu();
   });
 
   // Tutup menu saat link diklik
   navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-    });
+    link.addEventListener('click', () => closeMenu());
+  });
+
+  // Tutup menu jika user klik di luar navbar (saat menu terbuka)
+  document.addEventListener('click', (e) => {
+    if (navLinks.classList.contains('open') &&
+        !navLinks.contains(e.target) &&
+        !mobileBtn.contains(e.target)) {
+      closeMenu();
+    }
+  });
+
+  // Tutup menu jika viewport diperbesar ke desktop
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 680 && navLinks.classList.contains('open')) {
+      closeMenu();
+    }
   });
 }
 

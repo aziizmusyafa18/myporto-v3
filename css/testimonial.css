@@ -1,0 +1,760 @@
+/* ==========================================================================
+   TESTIMONIAL SECTION STYLES
+   Styling untuk section testimoni dengan rating interaktif
+   Mengikuti design tokens dari portofolio utama
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. TESTIMONIALS SECTION LAYOUT
+   -------------------------------------------------------------------------- */
+.testimonials-section {
+  background-color: var(--bg-secondary);
+  padding: 5rem 2rem;
+}
+
+.testimonials-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* --------------------------------------------------------------------------
+   2. FLOATING TESTIMONIAL BUTTON (FIXED BOTTOM RIGHT)
+   -------------------------------------------------------------------------- */
+.floating-testimonial-btn {
+  position: fixed !important;
+  bottom: 90px !important; /* 28px (scroll btn bottom) + 44px (scroll btn height) + 18px (gap) = 90px */
+  right: 28px !important; /* Sama dengan scroll to top button */
+  left: auto !important; /* Force remove any left positioning */
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, var(--accent-black) 0%, var(--accent-gray) 100%);
+  border: none;
+  box-shadow: var(--shadow-lg);
+  cursor: pointer;
+  z-index: 801; /* Di atas scroll to top button (800) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-normal);
+}
+
+.floating-testimonial-btn .btn-icon {
+  color: white;
+  position: relative;
+  z-index: 2;
+}
+
+.floating-testimonial-btn:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: var(--shadow-hover);
+}
+
+.floating-testimonial-btn:active {
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* Pulse Ring Animation */
+.btn-pulse-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 3px solid var(--accent-black);
+  transform: translate(-50%, -50%);
+  animation: pulseRing 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  pointer-events: none;
+}
+
+[data-theme="dark"] .btn-pulse-ring {
+  border-color: var(--accent-green);
+}
+
+@keyframes pulseRing {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.3);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.6);
+    opacity: 0;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   3. TESTIMONIAL MODAL POPUP
+   -------------------------------------------------------------------------- */
+.testimonial-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.testimonial-modal.show {
+  display: flex;
+  opacity: 1;
+  animation: modalFadeIn 0.3s ease forwards;
+}
+
+.testimonial-modal.hiding {
+  animation: modalFadeOut 0.3s ease forwards;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Modal Overlay (Backdrop) */
+.testimonial-modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 1;
+}
+
+[data-theme="dark"] .testimonial-modal-overlay {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Modal Dialog */
+.testimonial-modal-dialog {
+  position: relative;
+  z-index: 2;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 60px -15px rgba(0, 0, 0, 0.3);
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: modalSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes modalSlideUp {
+  from {
+    transform: translateY(40px) scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Modal Header */
+.testimonial-modal-header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.75rem 2rem;
+  border-bottom: 1px solid var(--border-light);
+  background-color: var(--bg-primary);
+}
+
+.modal-header-content {
+  display: flex;
+  gap: 1rem;
+  align-items: start;
+  flex: 1;
+}
+
+.modal-header-content svg {
+  color: var(--accent-black);
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+.modal-header-content h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.375rem;
+  line-height: 1.3;
+}
+
+.modal-header-content p {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.modal-close-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background-color: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.modal-close-btn:hover {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+/* Modal Body */
+.testimonial-modal-body {
+  padding: 2rem;
+  overflow-y: auto;
+  max-height: calc(90vh - 100px);
+}
+
+/* Scrollbar styling for modal body */
+.testimonial-modal-body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.testimonial-modal-body::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+  border-radius: 4px;
+}
+
+.testimonial-modal-body::-webkit-scrollbar-thumb {
+  background: var(--border-medium);
+  border-radius: 4px;
+}
+
+.testimonial-modal-body::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   3. TESTIMONIAL FORM ELEMENTS
+   -------------------------------------------------------------------------- */
+.testimonial-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.form-group .required {
+  color: #ef4444;
+  font-weight: 600;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-main);
+  font-size: 0.9375rem;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+  outline: none;
+}
+
+.form-input:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.08);
+}
+
+[data-theme="dark"] .form-input:focus {
+  box-shadow: 0 0 0 3px rgba(240, 246, 252, 0.1);
+}
+
+.form-input::placeholder {
+  color: var(--text-muted);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+  font-family: var(--font-main);
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   4. STAR RATING INTERACTIVE
+   -------------------------------------------------------------------------- */
+.star-rating {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-top: 0.25rem;
+}
+
+.star-rating .star {
+  font-size: 2rem;
+  color: var(--border-light);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  user-select: none;
+}
+
+.star-rating .star:hover {
+  transform: scale(1.15);
+  color: #fbbf24;
+}
+
+.star-rating .star.active {
+  color: #fbbf24;
+}
+
+.star-rating .star.active:hover {
+  color: #f59e0b;
+}
+
+.rating-hint {
+  display: block;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   5. SUBMIT BUTTON
+   -------------------------------------------------------------------------- */
+.btn-submit-testimonial {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+.btn-submit-testimonial svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* --------------------------------------------------------------------------
+   6. TESTIMONIALS DISPLAY AREA
+   -------------------------------------------------------------------------- */
+.testimonials-display-area {
+  background-color: transparent;
+}
+
+.testimonials-header-info {
+  margin-bottom: 1.5rem;
+}
+
+.testimonials-count-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.testimonials-hint {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   7. TESTIMONIALS LIST
+   -------------------------------------------------------------------------- */
+.testimonials-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  min-height: 300px;
+}
+
+/* Empty State */
+.empty-testimonials {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  text-align: center;
+  background-color: var(--bg-card);
+  border: 1px dashed var(--border-light);
+  border-radius: var(--radius-lg);
+  min-height: 300px;
+}
+
+.empty-testimonials svg {
+  color: var(--text-muted);
+  opacity: 0.5;
+  margin-bottom: 1rem;
+}
+
+.empty-testimonials p {
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+}
+
+/* --------------------------------------------------------------------------
+   8. TESTIMONIAL CARD
+   -------------------------------------------------------------------------- */
+.testimonial-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-normal);
+  animation: fadeInUp 0.4s ease;
+}
+
+.testimonial-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-medium);
+  transform: translateY(-2px);
+}
+
+/* Header Testimonial Card */
+.testimonial-card-header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.testimonial-author {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+.testimonial-author-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.testimonial-author-role {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.testimonial-rating {
+  display: flex;
+  gap: 0.25rem;
+  flex-shrink: 0;
+}
+
+.testimonial-rating .star-display {
+  font-size: 1rem;
+  color: #fbbf24;
+  line-height: 1;
+}
+
+/* Message Body */
+.testimonial-message {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  word-wrap: break-word;
+}
+
+/* Footer with date and delete button */
+.testimonial-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-light);
+  gap: 1rem;
+}
+
+.testimonial-date {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.testimonial-date svg {
+  width: 14px;
+  height: 14px;
+  opacity: 0.7;
+}
+
+.btn-delete-testimonial {
+  padding: 0.375rem 0.75rem;
+  font-size: 0.8125rem;
+  border: none;
+  background-color: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-family: var(--font-main);
+}
+
+.btn-delete-testimonial:hover {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+[data-theme="dark"] .btn-delete-testimonial:hover {
+  background-color: #7f1d1d;
+  color: #fca5a5;
+}
+
+.btn-delete-testimonial svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* --------------------------------------------------------------------------
+   9. ANIMATION
+   -------------------------------------------------------------------------- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Toast notification untuk feedback */
+.testimonial-toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: var(--accent-green);
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  z-index: 9999;
+  animation: slideInRight 0.3s ease, slideOutRight 0.3s ease 2.7s;
+  animation-fill-mode: forwards;
+}
+
+.testimonial-toast svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   10. RESPONSIVE DESIGN
+   -------------------------------------------------------------------------- */
+
+/* Adjust floating button position on mobile */
+@media (max-width: 1024px) {
+  .floating-testimonial-btn {
+    width: 50px;
+    height: 50px;
+    bottom: 88px !important;
+    right: 20px !important;
+    left: auto !important;
+  }
+
+  .floating-testimonial-btn .btn-icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .testimonials-section {
+    padding: 3rem 1.5rem;
+  }
+
+  .testimonial-modal {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .testimonial-modal-dialog {
+    max-width: 100%;
+    width: 100%;
+    max-height: 92vh;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  }
+
+  .testimonial-modal-header {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .modal-header-content h3 {
+    font-size: 1.125rem;
+  }
+
+  .modal-header-content p {
+    font-size: 0.8125rem;
+  }
+
+  .testimonial-modal-body {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .star-rating .star {
+    font-size: 1.75rem;
+  }
+
+  .testimonial-card {
+    padding: 1.25rem;
+  }
+
+  .testimonial-toast {
+    bottom: 1rem;
+    right: 1rem;
+    left: 1rem;
+    font-size: 0.875rem;
+  }
+
+  .floating-testimonial-btn {
+    width: 48px;
+    height: 48px;
+    bottom: 84px !important;
+    right: 16px !important;
+    left: auto !important;
+  }
+
+  .floating-testimonial-btn .btn-icon {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-header-content {
+    flex-direction: row;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  .modal-header-content h3 {
+    font-size: 1rem;
+  }
+
+  .testimonial-modal-header {
+    padding: 1.25rem 1rem;
+  }
+
+  .testimonial-modal-body {
+    padding: 1.25rem 1rem;
+  }
+
+  .testimonial-card-header {
+    flex-direction: column;
+    align-items: start;
+  }
+
+  .testimonial-rating {
+    margin-top: 0.25rem;
+  }
+
+  .btn-submit-testimonial {
+    font-size: 0.875rem;
+    padding: 0.75rem 1.25rem;
+  }
+
+  .floating-testimonial-btn {
+    width: 44px;
+    height: 44px;
+    bottom: 80px !important;
+    right: 16px !important;
+    left: auto !important;
+  }
+
+  .floating-testimonial-btn .btn-icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* Prevent body scroll when modal is open */
+body.modal-open {
+  overflow: hidden;
+}
