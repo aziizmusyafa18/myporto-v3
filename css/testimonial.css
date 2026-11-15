@@ -509,11 +509,11 @@
   word-wrap: break-word;
 }
 
-/* Footer with date and delete button */
+/* Testimonial card footer */
 .testimonial-card-footer {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   padding-top: 1rem;
   border-top: 1px solid var(--border-light);
   gap: 1rem;
@@ -531,36 +531,6 @@
   width: 14px;
   height: 14px;
   opacity: 0.7;
-}
-
-.btn-delete-testimonial {
-  padding: 0.375rem 0.75rem;
-  font-size: 0.8125rem;
-  border: none;
-  background-color: transparent;
-  color: var(--text-muted);
-  cursor: pointer;
-  border-radius: var(--radius-sm);
-  transition: all var(--transition-fast);
-  display: flex;
-  align-items: center;
-  gap: 0.375rem;
-  font-family: var(--font-main);
-}
-
-.btn-delete-testimonial:hover {
-  background-color: #fee2e2;
-  color: #dc2626;
-}
-
-[data-theme="dark"] .btn-delete-testimonial:hover {
-  background-color: #7f1d1d;
-  color: #fca5a5;
-}
-
-.btn-delete-testimonial svg {
-  width: 14px;
-  height: 14px;
 }
 
 /* --------------------------------------------------------------------------

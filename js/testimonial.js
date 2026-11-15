@@ -1,21 +1,25 @@
 /* ==========================================================================
    TESTIMONIAL FUNCTIONALITY - JAVASCRIPT
-   Fitur: Rating interaktif, localStorage CRUD, render dinamis
+   Fitur: Rating interaktif, Supabase insert/select, render dinamis
    ========================================================================== */
 
 // --------------------------------------------------------------------------
-// 1. STORAGE KEY & DATA MODEL
+// 1. SUPABASE CLIENT & DATA MODEL
 // --------------------------------------------------------------------------
-const TESTIMONIALS_STORAGE_KEY = 'portfolio_testimonials';
+const SUPABASE_URL = 'https://gaonwlkabonbnecaicdg.supabase.co';
+const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_4CUzcEpmgfkePJOkxiklNA_K0KIyVZ9';
+const supabaseClient = window.supabase && window.supabase.createClient
+  ? window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY)
+  : null;
 
 // Testimonial data structure:
 // {
-//   id: string (timestamp),
+//   id: string (UUID),
 //   name: string,
 //   role: string,
 //   rating: number (1-5),
 //   message: string,
-//   date: string (ISO format)
+//   created_at: string (ISO format)
 // }
 
 // --------------------------------------------------------------------------
@@ -148,7 +152,7 @@ function highlightStars(count) {
 // 5. FORM SUBMISSION HANDLER
 // --------------------------------------------------------------------------
 function initializeTestimonialForm() {
-  testimonialForm.addEventListener('submit', function(e) {
+  testimonialForm.addEventListener('submit', async function(e) {
     e.preventDefault();
     
     // Get form values
@@ -169,71 +173,86 @@ function initializeTestimonialForm() {
       return;
     }
     
-    // Create testimonial object
-    const testimonial = {
-      id: Date.now().toString(),
-      name: name,
-      role: role || 'Pengguna',
-      rating: rating,
-      message: message,
-      date: new Date().toISOString()
-    };
-    
-    // Save to localStorage
-    saveTestimonial(testimonial);
-    
-    // Show success feedback
-    showToast('Terima kasih! Testimoni Anda telah tersimpan.', 'success');
-    
-    // Reset form
-    testimonialForm.reset();
-    ratingInput.value = '0';
-    const stars = starRating.querySelectorAll('.star');
-    stars.forEach(s => s.classList.remove('active'));
-    highlightStars(0);
-    
-    // Close modal after short delay
-    setTimeout(() => {
-      closeModal();
-    }, 1500);
-    
-    // Re-render testimonials
-    renderTestimonials();
+    if (name.length > 100 || role.length > 120 || message.length > 2000) {
+      showToast('Periksa panjang nama, karya, atau testimoni Anda.', 'error');
+      return;
+    }
+
+    const submitButton = testimonialForm.querySelector('button[type="submit"]');
+    submitButton.disabled = true;
+
+    try {
+      const { error } = await supabaseClient
+        .from('testimonials')
+        .insert({
+          name: name,
+          role: role || 'Pengguna',
+          rating: rating,
+          message: message
+        });
+
+      if (error) {
+        console.error('Failed to submit testimonial:', error);
+        showToast('Testimoni gagal dikirim. Silakan coba lagi.', 'error');
+        return;
+      }
+
+      showToast('Terima kasih! Testimoni Anda telah dikirim.', 'success');
+
+      testimonialForm.reset();
+      ratingInput.value = '0';
+      const stars = starRating.querySelectorAll('.star');
+      stars.forEach(s => s.classList.remove('active'));
+      highlightStars(0);
+
+      setTimeout(() => {
+        closeModal();
+      }, 1500);
+
+      await renderTestimonials();
+    } catch (error) {
+      console.error('Unexpected error while submitting testimonial:', error);
+      showToast('Testimoni gagal dikirim. Periksa koneksi lalu coba lagi.', 'error');
+    } finally {
+      submitButton.disabled = false;
+    }
   });
 }
 
 // --------------------------------------------------------------------------
-// 6. LOCALSTORAGE OPERATIONS (CRUD)
+// 6. RENDER TESTIMONIALS TO UI
 // --------------------------------------------------------------------------
+async function renderTestimonials() {
+  let testimonials;
 
-// Get all testimonials from localStorage
-function getTestimonials() {
-  const data = localStorage.getItem(TESTIMONIALS_STORAGE_KEY);
-  return data ? JSON.parse(data) : [];
-}
+  try {
+    const result = await supabaseClient
+      .from('testimonials')
+      .select('id, name, role, rating, message, created_at')
+      .order('created_at', { ascending: false });
 
-// Save new testimonial
-function saveTestimonial(testimonial) {
-  const testimonials = getTestimonials();
-  testimonials.unshift(testimonial); // Add to beginning of array
-  localStorage.setItem(TESTIMONIALS_STORAGE_KEY, JSON.stringify(testimonials));
-}
+    if (result.error) {
+      console.error('Failed to load testimonials:', result.error);
+      testimonialCount.textContent = '0';
+      testimonialsList.innerHTML = `
+        <div class="empty-testimonials">
+          <p>Testimoni belum dapat dimuat. Silakan muat ulang halaman.</p>
+        </div>
+      `;
+      return;
+    }
 
-// Delete testimonial by id
-function deleteTestimonial(id) {
-  let testimonials = getTestimonials();
-  testimonials = testimonials.filter(t => t.id !== id);
-  localStorage.setItem(TESTIMONIALS_STORAGE_KEY, JSON.stringify(testimonials));
-  
-  showToast('Testimoni telah dihapus.', 'info');
-  renderTestimonials();
-}
-
-// --------------------------------------------------------------------------
-// 7. RENDER TESTIMONIALS TO UI
-// --------------------------------------------------------------------------
-function renderTestimonials() {
-  const testimonials = getTestimonials();
+    testimonials = result.data;
+  } catch (error) {
+    console.error('Unexpected error while loading testimonials:', error);
+    testimonialCount.textContent = '0';
+    testimonialsList.innerHTML = `
+      <div class="empty-testimonials">
+        <p>Testimoni belum dapat dimuat. Silakan muat ulang halaman.</p>
+      </div>
+    `;
+    return;
+  }
   
   // Update count
   testimonialCount.textContent = testimonials.length;
@@ -262,7 +281,7 @@ function renderTestimonials() {
 }
 
 // --------------------------------------------------------------------------
-// 8. CREATE TESTIMONIAL CARD ELEMENT
+// 7. CREATE TESTIMONIAL CARD ELEMENT
 // --------------------------------------------------------------------------
 function createTestimonialCard(testimonial) {
   const card = document.createElement('div');
@@ -270,7 +289,7 @@ function createTestimonialCard(testimonial) {
   card.setAttribute('data-id', testimonial.id);
   
   // Format date
-  const formattedDate = formatDate(testimonial.date);
+  const formattedDate = formatDate(testimonial.created_at);
   
   // Generate star rating display
   const starsHTML = generateStarRating(testimonial.rating);
@@ -299,29 +318,14 @@ function createTestimonialCard(testimonial) {
         </svg>
         <span>${formattedDate}</span>
       </div>
-      <button type="button" class="btn-delete-testimonial" data-id="${testimonial.id}">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <polyline points="3 6 5 6 21 6"></polyline>
-          <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-        </svg>
-        <span>Hapus</span>
-      </button>
     </div>
   `;
-  
-  // Attach delete event listener
-  const deleteBtn = card.querySelector('.btn-delete-testimonial');
-  deleteBtn.addEventListener('click', function() {
-    if (confirm('Hapus testimoni ini?')) {
-      deleteTestimonial(testimonial.id);
-    }
-  });
-  
+
   return card;
 }
 
 // --------------------------------------------------------------------------
-// 9. UTILITY FUNCTIONS
+// 8. UTILITY FUNCTIONS
 // --------------------------------------------------------------------------
 
 // Generate star rating HTML
@@ -364,7 +368,7 @@ function escapeHtml(text) {
 }
 
 // --------------------------------------------------------------------------
-// 10. TOAST NOTIFICATION
+// 9. TOAST NOTIFICATION
 // --------------------------------------------------------------------------
 function showToast(message, type = 'success') {
   // Remove existing toast if any
@@ -410,28 +414,3 @@ function showToast(message, type = 'success') {
     }
   }, 3000);
 }
-
-// --------------------------------------------------------------------------
-// 11. EXPORT FOR DEBUGGING (OPTIONAL)
-// --------------------------------------------------------------------------
-window.testimonialDebug = {
-  getAll: getTestimonials,
-  clear: function() {
-    localStorage.removeItem(TESTIMONIALS_STORAGE_KEY);
-    renderTestimonials();
-    console.log('All testimonials cleared');
-  },
-  add: function(name, role, rating, message) {
-    const testimonial = {
-      id: Date.now().toString(),
-      name: name,
-      role: role || 'Pengguna',
-      rating: rating,
-      message: message,
-      date: new Date().toISOString()
-    };
-    saveTestimonial(testimonial);
-    renderTestimonials();
-    console.log('Testimonial added:', testimonial);
-  }
-};
